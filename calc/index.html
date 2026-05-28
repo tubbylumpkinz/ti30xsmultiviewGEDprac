@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TI-30XS MultiView™ Scientific Calculator</title>
+  <!-- Google Fonts for premium retro-modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="workspace">
+    <!-- Helper Sidebar Guide -->
+    <aside class="guide-sidebar" id="guideSidebar">
+      <div class="sidebar-header">
+        <h2>TI-30XS MultiView Guide</h2>
+        <button class="close-sidebar-btn" id="closeSidebarBtn">&times;</button>
+      </div>
+      <div class="sidebar-content">
+        <section class="quick-start">
+          <h3>Quick Start</h3>
+          <p>This is a high-fidelity simulator of the <strong>TI-30XS MultiView™</strong>. It supports multi-line calculations, fractions, statistical data, and table functions.</p>
+        </section>
+        
+        <section class="keyboard-shortcuts">
+          <h3>Keyboard Shortcuts</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Calculator Button</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>0</code> - <code>9</code></td><td>Number keys</td></tr>
+              <tr><td><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></td><td><code>+</code>, <code>-</code>, <code>&times;</code>, <code>&divide;</code></td></tr>
+              <tr><td><code>Enter</code> or <code>=</code></td><td><code>enter</code></td></tr>
+              <tr><td><code>Backspace</code></td><td><code>del</code></td></tr>
+              <tr><td><code>Escape</code> or <code>c</code></td><td><code>clear</code></td></tr>
+              <tr><td><code>f</code></td><td><code>n/d</code> (Fraction)</td></tr>
+              <tr><td><code>t</code></td><td><code>[◄►]</code> (Toggle result)</td></tr>
+              <tr><td><code>s</code></td><td><code>sin</code> (sine)</td></tr>
+              <tr><td><code>o</code></td><td><code>cos</code> (cosine)</td></tr>
+              <tr><td><code>a</code></td><td><code>tan</code> (tangent)</td></tr>
+              <tr><td><code>v</code></td><td><code>x,y,z,t,a,b,c</code> (Variables)</td></tr>
+              <tr><td><code>Arrow Keys</code></td><td>Directional Pad</td></tr>
+              <tr><td><code>Shift</code></td><td><code>2nd</code> (Secondary mode)</td></tr>
+              <tr><td><code>m</code></td><td><code>mode</code> (Settings)</td></tr>
+              <tr><td><code>d</code></td><td><code>data</code> (Stats list)</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="cool-features">
+          <h3>Try These Expressions</h3>
+          <ul class="example-list">
+            <li><strong>Fraction Addition:</strong> Press <code>1</code> $\rightarrow$ <code>n/d</code> $\rightarrow$ <code>2</code> $\rightarrow$ <code>▶</code> $\rightarrow$ <code>+</code> $\rightarrow$ <code>1</code> $\rightarrow$ <code>n/d</code> $\rightarrow$ <code>3</code> $\rightarrow$ <code>enter</code>. The result is <code>5/6</code>. Press <code>[◄►]</code> to toggle to decimal format.</li>
+            <li><strong>Exact Radicals:</strong> Press <code>2nd</code> $\rightarrow$ <code>x²</code> (which triggers <code>√</code>) $\rightarrow$ <code>8</code> $\rightarrow$ <code>enter</code>. The result is <code>2√2</code>. Toggle to view <code>2.8284...</code></li>
+            <li><strong>Function Table:</strong> Press <code>table</code>. Enter a function like <code>3x² - 5</code> (use <code>x,y,z,t</code> key for x, and <code>^</code> for power). Set Start=0, Step=1. Click Auto $\rightarrow$ OK to view values!</li>
+            <li><strong>Data Editor:</strong> Press <code>data</code>. Enter <code>10</code>, <code>20</code>, <code>30</code> in L1. Press <code>2nd</code> $\rightarrow$ <code>data</code> (STAT). Select <code>1-Var Stats</code>, choose L1, click CALC. Scroll to see mean ($\bar{x}=20$), sum, stddev, and min/max!</li>
+          </ul>
+        </section>
+      </div>
+    </aside>
+
+    <!-- Main Container -->
+    <main class="calculator-container">
+      <button class="open-sidebar-btn" id="openSidebarBtn" title="Open User Guide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        Guide
+      </button>
+
+      <!-- The Physical Calculator -->
+      <div class="calculator">
+        <!-- Solar Panel and Brand Header -->
+        <div class="calc-header">
+          <div class="brand">
+            <span class="ti-text">TEXAS INSTRUMENTS</span>
+            <span class="model-text">TI-30XS <i>MultiView™</i></span>
+          </div>
+          <!-- Solar cell mockup -->
+          <div class="solar-panel" title="Solar & Battery Powered">
+            <div class="solar-cell"></div>
+            <div class="solar-cell"></div>
+            <div class="solar-cell"></div>
+            <div class="solar-cell"></div>
+          </div>
+        </div>
+
+        <!-- LCD Screen -->
+        <div class="lcd-screen-outer">
+          <div class="lcd-screen-inner" id="lcdScreen">
+            <!-- Top Status Indicator Bar -->
+            <div class="status-bar" id="statusBar">
+              <span class="indicator" id="ind-2nd">2nd</span>
+              <span class="indicator" id="ind-hyp">HYP</span>
+              <span class="indicator" id="ind-fix">FIX</span>
+              <span class="indicator" id="ind-sci">SCI</span>
+              <span class="indicator" id="ind-eng">ENG</span>
+              <span class="indicator active" id="ind-deg">DEG</span>
+              <span class="indicator" id="ind-rad">RAD</span>
+              <span class="indicator" id="ind-grad">GRAD</span>
+              <span class="indicator" id="ind-l1">L1</span>
+              <span class="indicator" id="ind-l2">L2</span>
+              <span class="indicator" id="ind-l3">L3</span>
+              <div class="scroll-arrows">
+                <span class="arrow-ind" id="ind-arrow-up">▲</span>
+                <span class="arrow-ind" id="ind-arrow-down">▼</span>
+                <span class="arrow-ind" id="ind-arrow-left">◀</span>
+                <span class="arrow-ind" id="ind-arrow-right">▶</span>
+              </div>
+            </div>
+            
+            <!-- LCD Screen Lines -->
+            <div class="lcd-lines-container" id="lcdLinesContainer">
+              <div class="lcd-line" id="line-0"></div>
+              <div class="lcd-line" id="line-1"></div>
+              <div class="lcd-line" id="line-2"></div>
+              <div class="lcd-line active-line" id="line-3">
+                <span class="cursor" id="lcdCursor"></span>
+              </div>
+            </div>
+
+            <!-- Overlay Menu Modal (inside LCD Screen) -->
+            <div class="lcd-menu-overlay hidden" id="lcdMenuOverlay">
+              <div class="menu-title" id="menuTitle">MODE</div>
+              <div class="menu-items" id="menuItems">
+                <!-- Programmatically generated list items -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keypad Area -->
+        <div class="keypad">
+          
+          <!-- Top Control Pad: 2nd, mode, del, clear, x-1, x2, ^, sin, cos, tan + DPad -->
+          <div class="top-control-pad">
+            <div class="top-keys-grid">
+              
+              <!-- Row 1 -->
+              <div class="key-container">
+                <span class="secondary-label"></span>
+                <button class="btn key-2nd" id="btn-2nd" data-key="2nd">2nd</button>
+              </div>
+              <div class="key-container">
+                <span class="secondary-label">quit</span>
+                <button class="btn key-system" id="btn-mode" data-key="mode">mode</button>
+              </div>
+              <div class="key-container">
+                <span class="secondary-label">insert</span>
+                <button class="btn key-system" id="btn-del" data-key="del">del</button>
+              </div>
+              <div class="key-container">
+                <span class="secondary-label">clear var</span>
+                <button class="btn key-system" id="btn-clear" data-key="clear">clear</button>
+              </div>
+
+              <!-- Row 2 -->
+              <div class="key-container">
+                <span class="secondary-label font-small">x!</span>
+                <button class="btn key-func" id="btn-recip" data-key="x-1">x⁻¹</button>
+              </div>
+              <div class="key-container">
+                <span class="secondary-label font-small">&radic;</span>
+                <button class="btn key-func" id="btn-square" data-key="x2">x²</button>
+              </div>
+              <div class="key-container">
+                <span class="secondary-label font-small"><sup>x</sup>&radic;</span>
+                <button class="btn key-func" id="btn-pow" data-key="^">^</button>
+              </div>
+              <div class="key-container">
+                <span class="secondary-label font-small">sin⁻¹</span>
+                <button class="btn key-func" id="btn-sin" data-key="sin">sin</button>
+              </div>
+
+              <!-- Row 3 (Double width trig keys) -->
+              <div class="key-container span-two-top">
+                <span class="secondary-label font-small">cos⁻¹</span>
+                <button class="btn key-func" id="btn-cos" data-key="cos">cos</button>
+              </div>
+              <div class="key-container span-two-top">
+                <span class="secondary-label font-small">tan⁻¹</span>
+                <button class="btn key-func" id="btn-tan" data-key="tan">tan</button>
+              </div>
+
+            </div>
+
+            <!-- Directional Arrow Pad -->
+            <div class="dpad-container">
+              <div class="dpad">
+                <button class="dpad-btn up" id="btn-up" data-key="ArrowUp" title="Scroll Up">▲</button>
+                <button class="dpad-btn left" id="btn-left" data-key="ArrowLeft" title="Move Cursor Left">◀</button>
+                <button class="dpad-btn right" id="btn-right" data-key="ArrowRight" title="Move Cursor Right">▶</button>
+                <button class="dpad-btn down" id="btn-down" data-key="ArrowDown" title="Scroll Down">▼</button>
+                <div class="dpad-center"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bezel Middle Divider -->
+          <div class="calc-divider"></div>
+
+          <!-- Main Keys Grid (cos, tan are moved to top, starts with pi, x10n, etc.) -->
+          <div class="main-keys-grid">
+            
+            <!-- Row 1 (6 columns) -->
+            <div class="key-container">
+              <span class="secondary-label">%</span>
+              <button class="btn key-func" id="btn-pi" data-key="pi">&pi;</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label">ee</span>
+              <button class="btn key-func" id="btn-x10n" data-key="x10n">x10ⁿ</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label">num-solve</span>
+              <button class="btn key-func" id="btn-math" data-key="math">math</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label">stat</span>
+              <button class="btn key-func" id="btn-data" data-key="data">data</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label">clear table</span>
+              <button class="btn key-func" id="btn-table" data-key="table">table</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label">recall</span>
+              <button class="btn key-func" id="btn-vars" data-key="vars">x<sup>yzt</sup><sub>abc</sub></button>
+            </div>
+
+            <!-- Row 2 (6 columns) -->
+            <div class="key-container">
+              <span class="secondary-label"></span>
+              <button class="btn key-func" id="btn-sto" data-key="sto">sto&rarr;</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label font-small">U<sup>n</sup>/<sub>d</sub></span>
+              <button class="btn key-func" id="btn-frac" data-key="frac"><sup>n</sup>/<sub>d</sub></button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label font-small">10<sup>x</sup></span>
+              <button class="btn key-func" id="btn-log" data-key="log">log</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label font-small">e<sup>x</sup></span>
+              <button class="btn key-func" id="btn-ln" data-key="ln">ln</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label font-small">prb</span>
+              <button class="btn key-func" id="btn-lparen" data-key="(">(</button>
+            </div>
+            <div class="key-container">
+              <span class="secondary-label font-small">angle</span>
+              <button class="btn key-func" id="btn-rparen" data-key=")">)</button>
+            </div>
+
+            <!-- Row 3 (4 columns, span 1.5 each) -->
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-7" data-key="7">7</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-8" data-key="8">8</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-9" data-key="9">9</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-op" id="btn-div" data-key="/">&divide;</button>
+            </div>
+
+            <!-- Row 4 (4 columns, span 1.5 each) -->
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-4" data-key="4">4</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-5" data-key="5">5</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-6" data-key="6">6</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-op" id="btn-mul" data-key="*">&times;</button>
+            </div>
+
+            <!-- Row 5 (4 columns, span 1.5 each) -->
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-1" data-key="1">1</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-2" data-key="2">2</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-3" data-key="3">3</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-op" id="btn-sub" data-key="-">&minus;</button>
+            </div>
+
+            <!-- Row 6 (4 columns, span 1.5 each) -->
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label font-small" style="color: #4cd137;">reset</span>
+              <button class="btn key-num" id="btn-0" data-key="0">0</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-num" id="btn-dec" data-key=".">.</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label">ans</span>
+              <button class="btn key-num" id="btn-neg" data-key="(-)">(&minus;)</button>
+            </div>
+            <div class="key-container span-one-and-half">
+              <span class="secondary-label"></span>
+              <button class="btn key-op" id="btn-add" data-key="+">+</button>
+            </div>
+
+            <!-- Row 7 (2 columns, span 3 each) -->
+            <div class="key-container span-three-bottom">
+              <span class="secondary-label font-small">f&larr;&rarr;d</span>
+              <button class="btn key-toggle-ans" id="btn-toggle" data-key="toggle">◄►</button>
+            </div>
+            <div class="key-container span-three-bottom">
+              <span class="secondary-label"></span>
+              <button class="btn key-enter" id="btn-enter" data-key="enter">enter</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Settings Bar (Sound, Light/Dark) -->
+        <div class="calc-footer">
+          <button class="footer-btn" id="soundToggleBtn" title="Toggle Button Sounds">
+            🔊 Sound: On
+          </button>
+          <button class="footer-btn" id="themeToggleBtn" title="Toggle Theme">
+            🌓 Theme
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Audio elements for key feedback -->
+  <audio id="audioClick" src="data:audio/wav;base64,UklGRlQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YRAAAAAAd3d3d3d3d3d3d3d3d3d3dw==" preload="auto"></audio>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
